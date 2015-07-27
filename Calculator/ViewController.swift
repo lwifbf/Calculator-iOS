@@ -58,49 +58,49 @@ class ViewController: UIViewController {
         }
         inputHistory.text = inputHistory.text! + operation
         
-//        switch operation{
-//            
-//            //--Closure advanced use
-//            //func multiply(op1:D, op2:D) -> D {return op1*op2}
-//            //  performOp(multiply)
-//            //performOp( { (op1:D, op2:D) -> D in return op1*op2} )
-//            //performOp( { (op1, op2)  in return op1*op2} )
-//            //performOp( { (op1, op2)  in op1*op2} )
-//            //performOp( { $0*$1 } )
-//            
-//            case "✕":   performOperationBinary{ $1 * $0 }
-//            case "÷":   performOperationBinary{ $1 / $0 }
-//            case "+":   performOperationBinary{ $1 + $0 }
-//            case "−":   performOperationBinary{ $1 - $0 }
-//            case "√":   performOperationUnary{ sqrt($0) }
-//            case "sin":     performOperationUnary{ sin($0) }
-//            case "cos":     performOperationUnary{ cos($0) }
-//            case "π":   let pi = M_PI
-//                        displayValue = pi
-//                        enter()
-//            case "C":   inputHistory.text = ""
-//                        display.text = "0"
-//                        operandStack.removeAll()
-//            default :   break
-//        }
+        switch operation{
+            
+            //--Closure advanced use
+            //func multiply(op1:D, op2:D) -> D {return op1*op2}
+            //  performOp(multiply)
+            //performOp( { (op1:D, op2:D) -> D in return op1*op2} )
+            //performOp( { (op1, op2)  in return op1*op2} )
+            //performOp( { (op1, op2)  in op1*op2} )
+            //performOp( { $0*$1 } )
+            
+            case "✕":   performOperationBinary{ $1 * $0 }
+            case "÷":   performOperationBinary{ $1 / $0 }
+            case "+":   performOperationBinary{ $1 + $0 }
+            case "−":   performOperationBinary{ $1 - $0 }
+            case "√":   performOperationUnary{ sqrt($0) }
+            case "sin":     performOperationUnary{ sin($0) }
+            case "cos":     performOperationUnary{ cos($0) }
+            case "π":   let pi = M_PI
+                        displayValue = pi
+                        enter()
+            case "C":   inputHistory.text = ""
+                        display.text = "0"
+                        operandStack.removeAll()
+            default :   break
+        }
     }
     
-//    func performOperationBinary(operation: (Double,Double) -> Double){
-//        if operandStack.count>=2{
-//            displayValue = operation(operandStack.removeLast(),operandStack.removeLast())
-//            enter()
-//        }
-//    }
-//    
-//    func performOperationUnary(operation: Double -> Double){
-//        if operandStack.count>=1{
-//            displayValue = operation(operandStack.removeLast())
-//            enter()
-//        }
-//    }
+    func performOperationBinary(operation: (Double,Double) -> Double){
+        if operandStack.count>=2{
+            displayValue = operation(operandStack.removeLast(),operandStack.removeLast())
+            enter()
+        }
+    }
+    
+    func performOperationUnary(operation: Double -> Double){
+        if operandStack.count>=1{
+            displayValue = operation(operandStack.removeLast())
+            enter()
+        }
+    }
     
     
-//    var operandStack = Array<Double>()
+    var operandStack = Array<Double>()
     
     
     @IBAction func enter() {
@@ -108,8 +108,8 @@ class ViewController: UIViewController {
         haveInsertPoint = false
         
         brain.pushOperand(displayValue)
-//        operandStack.append(displayValue)
-//        println("operandStack = \(operandStack)")
+        operandStack.append(displayValue)
+        println("operandStack = \(operandStack)")
         
         inputHistory.text = inputHistory.text! + " "
     }
