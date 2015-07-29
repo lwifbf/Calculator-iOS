@@ -32,7 +32,16 @@ class CalculatorBrain{
         knowOps["÷"] = Op.BinaryOperation("÷") { $1 / $0 }
         knowOps["+"] = Op.BinaryOperation("+", +)
         knowOps["−"] = Op.BinaryOperation("−") { $1 - $0 }
+        
         knowOps["√"] = Op.UnaryOperation("√", sqrt)
+        knowOps["sin"] = Op.UnaryOperation("sin", sin)
+        knowOps["cos"] = Op.UnaryOperation("cos", cos)
+//        case "π":   let pi = M_PI
+//        displayValue = pi
+//        enter()
+//        case "C":   inputHistory.text = ""
+//        display.text = "0"
+//        operandStack.removeAll()
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]){
@@ -71,14 +80,20 @@ class CalculatorBrain{
         return result
     }
     
-    func pushOperand(operand: Double){
+    func pushOperand(operand: Double) -> Double?{
         opStack.append(Op.Operand(operand))
+        return evaluate()
     }
     
-    func performOperation(symbol: String){
+    func performOperation(symbol: String) -> Double?{
         if let operation = knowOps[symbol]{
             opStack.append(operation)
         }
+        return evaluate()
+    }
+    
+    func printStack(){
+        println(opStack.first)
     }
     
 }
