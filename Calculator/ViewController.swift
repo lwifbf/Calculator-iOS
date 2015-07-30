@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     
     var brain = CalculatorBrain()
     
+    
+    
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         
@@ -60,24 +62,15 @@ class ViewController: UIViewController {
         
         inputHistory.text = inputHistory.text! + const
         
-        userHaveInsertedNumber = true
-        
-        switch const{
-        case "π":
-            let pi = M_PI
-            displayValue = pi
-            enter()
-        default:
-            break
+        if let result = brain.pushConstant(const){
+            displayValue = result
         }
+        else{
+            displayValue = 0
+        }
+        
     }
-    
-    @IBAction func clearCalculator(sender: UIButton) {
-        inputHistory.text = ""
-        display.text = "0"
-        brain.clearAll()
-    }
-    
+
     
     @IBAction func operate(sender: UIButton) {
         let operation = sender.currentTitle!
@@ -98,6 +91,11 @@ class ViewController: UIViewController {
     
     
     
+    @IBAction func clearCalculator(sender: UIButton) {
+        inputHistory.text = ""
+        displayValue = 0
+        brain.clearAll()
+    }
     
     @IBAction func enter() {
         

@@ -14,6 +14,7 @@ class CalculatorBrain{
         case Operand(Double)
         case UnaryOperation(String, Double -> Double)
         case BinaryOperation(String, (Double,Double) -> Double)
+        case Constant(String, Double)
     }
     
     //Array<Op>() = [Op]()
@@ -36,6 +37,8 @@ class CalculatorBrain{
         knowOps["√"] = Op.UnaryOperation("√", sqrt)
         knowOps["sin"] = Op.UnaryOperation("sin", sin)
         knowOps["cos"] = Op.UnaryOperation("cos", cos)
+        
+        knowOps["π"] = Op.Constant("π", M_PI)
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]){
@@ -64,6 +67,12 @@ class CalculatorBrain{
                         return (operation(op1,op2), op2Evaluation.remainingOps)
                     }
                 }
+                
+            case .Constant(_, let constant):
+                return (constant, remainingOps)
+                
+            default:
+                break
             }
         }
         
@@ -87,6 +96,14 @@ class CalculatorBrain{
         }
         return evaluate()
     }
+    
+    func pushConstant(symbol: String) -> Double?{
+        if let constant = knowOps[symbol]{
+            opStack.append(constant)
+        }
+        return evaluate()
+    }
+
     
     
     func clearAll(){
