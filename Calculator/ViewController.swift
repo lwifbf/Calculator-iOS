@@ -16,8 +16,6 @@ class ViewController: UIViewController {
     var userHaveInsertedNumber: Bool = false
     var haveInsertPoint: Bool = false
     
-    var brain = CalculatorBrain()
-    
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         
