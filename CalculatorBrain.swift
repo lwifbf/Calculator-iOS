@@ -36,12 +36,8 @@ class CalculatorBrain{
         knowOps["√"] = Op.UnaryOperation("√", sqrt)
         knowOps["sin"] = Op.UnaryOperation("sin", sin)
         knowOps["cos"] = Op.UnaryOperation("cos", cos)
-//        case "π":   let pi = M_PI
-//        displayValue = pi
-//        enter()
-//        case "C":   inputHistory.text = ""
-//        display.text = "0"
-//        operandStack.removeAll()
+        
+//        knowOps[""]
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]){
@@ -49,6 +45,7 @@ class CalculatorBrain{
         if !ops.isEmpty{
             var remainingOps = ops
             let op = remainingOps.removeLast()
+            
             
             switch op{
             case .Operand(let operand):
@@ -92,14 +89,8 @@ class CalculatorBrain{
         return evaluate()
     }
     
-    func printStack(){
-        
-        if let fir = opStack.first  {
-            switch fir{
-            case .Operand:  println(fir)
-            default:    println("operation")
-            }
-        }
+    func clearAll(){
+        opStack.removeAll()
     }
     
 }

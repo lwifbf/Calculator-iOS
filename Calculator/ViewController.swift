@@ -48,8 +48,36 @@ class ViewController: UIViewController {
         }
 
 //        println("digit = \(digit)")
-//        brain.printStack()
     }
+    
+    @IBAction func appendConstant(sender: UIButton) {
+        
+        if userHaveInsertedNumber{
+            enter()
+        }
+        
+        let const = sender.currentTitle!
+        
+        inputHistory.text = inputHistory.text! + const
+        
+        userHaveInsertedNumber = true
+        
+        switch const{
+        case "π":
+            let pi = M_PI
+            displayValue = pi
+            enter()
+        default:
+            break
+        }
+    }
+    
+    @IBAction func clearCalculator(sender: UIButton) {
+        inputHistory.text = ""
+        display.text = "0"
+        brain.clearAll()
+    }
+    
     
     @IBAction func operate(sender: UIButton) {
         let operation = sender.currentTitle!
@@ -66,24 +94,27 @@ class ViewController: UIViewController {
             displayValue = 0
         }
         
-//        brain.printStack()
     }
     
     
     
     
     @IBAction func enter() {
-        userHaveInsertedNumber = false
-        haveInsertPoint = false
         
-        if let result = brain.pushOperand(displayValue) {
-            displayValue = result
+        if userHaveInsertedNumber{
+            
+            userHaveInsertedNumber = false
+            haveInsertPoint = false
+            
+            if let result = brain.pushOperand(displayValue) {
+                displayValue = result
+            }
+            else{
+                displayValue = 0
+            }
+            
+            inputHistory.text = inputHistory.text! + " "
         }
-        else{
-            displayValue = 0
-        }
-        
-        inputHistory.text = inputHistory.text! + " "
     }
     
     var displayValue: Double {
