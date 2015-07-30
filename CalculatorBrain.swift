@@ -36,8 +36,6 @@ class CalculatorBrain{
         knowOps["√"] = Op.UnaryOperation("√", sqrt)
         knowOps["sin"] = Op.UnaryOperation("sin", sin)
         knowOps["cos"] = Op.UnaryOperation("cos", cos)
-        
-//        knowOps[""]
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]){
@@ -56,6 +54,7 @@ class CalculatorBrain{
                 if let operand = operandEvaluation.result{
                     return (operation(operand), operandEvaluation.remainingOps)
                 }
+                
             case .BinaryOperation(_, let operation):
                 let op1Evaluation = evaluate(remainingOps)
                 if let op1 = op1Evaluation.result{
@@ -88,6 +87,7 @@ class CalculatorBrain{
         }
         return evaluate()
     }
+    
     
     func clearAll(){
         opStack.removeAll()
