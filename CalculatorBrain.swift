@@ -93,7 +93,13 @@ class CalculatorBrain{
     }
     
     func printStack(){
-        println(opStack.first)
+        
+        if let fir = opStack.first  {
+            switch fir{
+            case .Operand:  println(fir)
+            default:    println("operation")
+            }
+        }
     }
     
 }

@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         }
 
 //        println("digit = \(digit)")
-        brain.printStack()
+//        brain.printStack()
     }
     
     @IBAction func operate(sender: UIButton) {
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
             displayValue = 0
         }
         
-        brain.printStack()
+//        brain.printStack()
     }
     
     
