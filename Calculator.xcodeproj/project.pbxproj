@@ -14,6 +14,7 @@
 		189EE2AA1B1AF2E800B7F3E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 189EE2A91B1AF2E800B7F3E2 /* Images.xcassets */; };
 		189EE2AD1B1AF2E800B7F3E2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189EE2AB1B1AF2E800B7F3E2 /* LaunchScreen.xib */; };
 		189EE2B91B1AF2E800B7F3E2 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189EE2B81B1AF2E800B7F3E2 /* CalculatorTests.swift */; };
+		18D46CF31B6BA86B00096AE4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 18D46CF21B6BA86B00096AE4 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		189EE2B21B1AF2E800B7F3E2 /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		189EE2B71B1AF2E800B7F3E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		189EE2B81B1AF2E800B7F3E2 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		18D46CF21B6BA86B00096AE4 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				181F255B1B60E5E800E8763D /* CalculatorBrain.swift */,
+				18D46CF21B6BA86B00096AE4 /* .gitignore */,
 				189EE29F1B1AF2E800B7F3E2 /* Calculator */,
 				189EE2B51B1AF2E800B7F3E2 /* CalculatorTests */,
 				189EE29E1B1AF2E800B7F3E2 /* Products */,
@@ -195,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D46CF31B6BA86B00096AE4 /* .gitignore in Resources */,
 				189EE2A81B1AF2E800B7F3E2 /* Main.storyboard in Resources */,
 				189EE2AD1B1AF2E800B7F3E2 /* LaunchScreen.xib in Resources */,
 				189EE2AA1B1AF2E800B7F3E2 /* Images.xcassets in Resources */,
