@@ -10,11 +10,28 @@ import Foundation
 
 class CalculatorBrain{
     
-    private enum Op{
+    private enum Op: Printable {
         case Operand(Double)
         case UnaryOperation(String, Double -> Double)
         case BinaryOperation(String, (Double,Double) -> Double)
         case Constant(String, Double)
+        
+        //define get
+        var description: String{
+            get{
+                switch self{
+                case .Operand(let operand):
+                    return "\(operand)"
+                case .UnaryOperation(let symbol,_):
+                    return symbol
+                case .BinaryOperation(let symbol,_):
+                    return symbol
+                case .Constant(let symbol, _):
+                    return symbol
+                }
+            }
+        }
+        
     }
     
     //Array<Op>() = [Op]()
@@ -25,20 +42,26 @@ class CalculatorBrain{
     
     init(){
         
+        func learnOp(op: Op){
+            knowOps[op.description] = op
+        }
+        
         //Op.BinaryOperation("×", { $0*$1 })
         //Op.BinaryOperation("×") { $0*$1 }
         //Op.BinaryOperation("×", * )
         
-        knowOps["×"] = Op.BinaryOperation("×", *)
-        knowOps["÷"] = Op.BinaryOperation("÷") { $1 / $0 }
-        knowOps["+"] = Op.BinaryOperation("+", +)
-        knowOps["−"] = Op.BinaryOperation("−") { $1 - $0 }
+        //knowOps["×"] = Op.BinaryOperation("×", *)
         
-        knowOps["√"] = Op.UnaryOperation("√", sqrt)
-        knowOps["sin"] = Op.UnaryOperation("sin", sin)
-        knowOps["cos"] = Op.UnaryOperation("cos", cos)
+        learnOp(Op.BinaryOperation("×", *))
+        learnOp(Op.BinaryOperation("÷") { $1 / $0 })
+        learnOp(Op.BinaryOperation("+", +))
+        learnOp(Op.BinaryOperation("−") { $1 - $0 })
         
-        knowOps["π"] = Op.Constant("π", M_PI)
+        learnOp(Op.UnaryOperation("√", sqrt))
+        learnOp(Op.UnaryOperation("sin", sin))
+        learnOp(Op.UnaryOperation("cos", cos))
+        
+        learnOp(Op.Constant("π", M_PI))
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]){
@@ -82,6 +105,8 @@ class CalculatorBrain{
     func evaluate() -> Double?{
         //remainder or _
         let (result, remainingOps) = evaluate(opStack)
+        
+        println("\(opStack) = \(result) with \(remainingOps) left over")
         return result
     }
     
